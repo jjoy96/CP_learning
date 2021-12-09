@@ -45,7 +45,6 @@ signed main(){
         int x,y;
         cin>>x>>y;
         int qq=lca(x,y);
-        //cout<<"(x,y)="<<'('<<x<<","<<y<<")\n";
         cout<<qq<<' '<<dis[x]+dis[y]-2*dis[qq]<<'\n';
     }
 }
