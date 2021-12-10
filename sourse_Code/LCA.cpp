@@ -22,9 +22,9 @@ bool is_ac(int a,int b){
     return tin[a]<=tin[b]&&tout[a]>=tout[b];  //  拿/不拿掉等號評測WA的答案是相同的
 } 
 int lca(int a,int b){
-    if(a==b||is_ac(a,b)) return a;
+    if(is_ac(a,b)) return a;
     if(is_ac(b,a)) return b;
-    for(int i=logN;i>=0;i--){
+    for(int i=logN-1;i>=0;i--){
         if(!is_ac(ac[a][i],b))
             a=ac[a][i];
     }
@@ -40,11 +40,12 @@ signed main(){
             v[i].push_back(x);
         }
     }
-    dfs(1,-1);
+    dfs(1,0);
     for(int i=0;i<m;i++){
         int x,y;
         cin>>x>>y;
         int qq=lca(x,y);
+        //cout<<"(x,y)="<<'('<<x<<","<<y<<")\n";
         cout<<qq<<' '<<dis[x]+dis[y]-2*dis[qq]<<'\n';
     }
 }
